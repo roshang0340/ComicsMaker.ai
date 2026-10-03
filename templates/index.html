@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComicCraft - AI Comic Story Creator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: #1a2238 url('/static/scenic_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Top Navigation Tabs */
+    .tab-nav {
+      display: flex;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      padding: 5px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 11px 16px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #94a3b8;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: #1976d2;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.35);
+    }
+
+    .badge-count {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+
+    .form-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 34px 38px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card-title {
+      font-size: 23px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .btn-reset-form {
+      font-size: 12px;
+      color: #64748b;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .btn-reset-form:hover {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 13px;
+      font-size: 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background-color: #f8fafc;
+      color: #1e293b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+
+    .form-control:focus {
+      border-color: #2563eb;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 75px;
+    }
+
+    select.form-control {
+      cursor: pointer;
+      appearance: auto;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 13px;
+      margin-top: 8px;
+      background-color: #1976d2;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      background-color: #1565c0;
+    }
+
+    .btn-submit:active {
+      transform: scale(0.99);
+    }
+
+    /* History List Styling */
+    .history-container {
+      display: none;
+    }
+
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .btn-clear-all {
+      font-size: 12.5px;
+      color: #ef4444;
+      background: #fef2f2;
+      border: 1px solid #fee2e2;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-clear-all:hover {
+      background: #fee2e2;
+    }
+
+    .history-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .history-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border-color: #cbd5e1;
+    }
+
+    .history-thumb {
+      width: 88px;
+      height: 72px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #0f172a;
+      border: 1px solid #cbd5e1;
+      flex-shrink: 0;
+    }
+
+    .history-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .history-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .history-meta {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 6px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .history-tag {
+      background: #e2e8f0;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .history-prompt-preview {
+      font-size: 12px;
+      color: #64748b;
+      font-style: italic;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .history-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .btn-action {
+      padding: 8px 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: none;
+      transition: all 0.15s;
+    }
+
+    .btn-view {
+      background: #2563eb;
+      color: #ffffff;
+    }
+    .btn-view:hover { background: #1d4ed8; }
+
+    .btn-pdf {
+      background: #059669;
+      color: #ffffff;
+    }
+    .btn-pdf:hover { background: #047857; }
+
+    .btn-delete {
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+    .btn-delete:hover { background: #fca5a5; }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #64748b;
+    }
+
+    .empty-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    /* Loading Overlay */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .spinner {
+      width: 54px;
+      height: 54px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid #38bdf8;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 18px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .loading-status {
+      font-size: 14px;
+      color: #94a3b8;
+      max-width: 400px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-wrapper">
+    <!-- Top Tabs -->
+    <div class="tab-nav">
+      <button class="tab-btn active" id="tabCreate" onclick="switchTab('create')">
+        <span>✏️</span> Create Comic
+      </button>
+      <button class="tab-btn" id="tabHistory" onclick="switchTab('history')">
+        <span>📚</span> Comic History
+        <span class="badge-count" id="historyBadge">{{ history|length }}</span>
+      </button>
+    </div>
+
+    <!-- Create Comic Form -->
+    <div class="form-card" id="cardCreate">
+      <div class="card-title">
+        <span>✏️ Create Your Comic</span>
+        <button type="button" class="btn-reset-form" onclick="resetFormToDefaults()">↺ Clear</button>
+      </div>
+
+      <form id="comicForm" action="/generate" method="POST">
+        <div class="form-group">
+          <label for="prompt">Story Prompt:</label>
+          <textarea id="prompt" name="prompt" class="form-control" rows="3" required placeholder="Enter your story idea or prompt..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="character_name">Main Character Name:</label>
+            <input type="text" id="character_name" name="character_name" class="form-control" placeholder="e.g. Hero name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="panel_count">Panel Count (Panels):</label>
+            <select id="panel_count" name="panel_count" class="form-control">
+              <option value="2">2 Panels (Quick)</option>
+              <option value="3" selected>3 Panels (Standard)</option>
+              <option value="4">4 Panels</option>
+              <option value="5">5 Panels (Full Arc)</option>
+              <option value="6">6 Panels</option>
+              <option value="8">8 Panels (Storybook)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="setting">Setting:</label>
+          <select id="setting" name="setting" class="form-control">
+            <option value="forest" selected>Forest</option>
+            <option value="cave">Cave / Underworld</option>
+            <option value="school">School / Academy</option>
+            <option value="space">Space / Cosmos</option>
+            <option value="city">City / Metropolis</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="tone">Story Tone:</label>
+          <select id="tone" name="tone" class="form-control">
+            <option value="dramatic" selected>Dramatic</option>
+            <option value="light-hearted">Light-hearted</option>
+            <option value="poetic">Poetic</option>
+            <option value="funny">Funny</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="style">Art Style:</label>
+          <select id="style" name="style" class="form-control">
+            <option value="comic book" selected>Comic Book</option>
+            <option value="realistic">Realistic</option>
+            <option value="anime">Anime / Manga</option>
+            <option value="pixel art">Pixel Art</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span>🎨</span> Generate Comic
+        </button>
+      </form>
+    </div>
+
+    <!-- History Container -->
+    <div class="form-card history-container" id="cardHistory">
+      <div class="history-header">
+        <div class="card-title" style="margin-bottom: 0;">
+          <span>📚 Saved Comic History</span>
+        </div>
+        {% if history and history|length > 0 %}
+        <button class="btn-clear-all" onclick="clearAllHistory()">🗑️ Clear All</button>
+        {% endif %}
+      </div>
+
+      <div id="historyList">
+        {% if history and history|length > 0 %}
+          {% for item in history %}
+          <div class="history-card" id="history-item-{{ item.id }}">
+            <img src="{{ item.cover_image or '/static/panels/panel_fallback.png' }}" alt="Thumbnail" class="history-thumb">
+            
+            <div class="history-info">
+              <div class="history-title">{{ item.title }}</div>
+              <div class="history-meta">
+                <span class="history-tag">👤 {{ item.character_name }}</span>
+                <span class="history-tag">🖼️ {{ item.panel_count }} Panels</span>
+                <span class="history-tag">✨ {{ item.tone|capitalize }}</span>
+                <span>📅 {{ item.created_at }}</span>
+              </div>
+              <div class="history-prompt-preview">"{{ item.prompt }}"</div>
+            </div>
+
+            <div class="history-actions">
+              <a href="/comic/{{ item.id }}" class="btn-action btn-view" title="View Comic Preview">
+                <span>👁️</span> View
+              </a>
+              {% if item.pdf_path %}
+              <a href="{{ item.pdf_path }}" download class="btn-action btn-pdf" title="Instant PDF Download">
+                <span>📥</span> PDF
+              </a>
+              {% endif %}
+              <button onclick="deleteComic('{{ item.id }}')" class="btn-action btn-delete" title="Delete from History">
+                <span>🗑️</span>
+              </button>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty-state">
+            <div class="empty-icon">📖</div>
+            <p><strong>No comics in history yet.</strong></p>
+            <p style="font-size: 13px; margin-top: 6px;">Create your first comic above and it will be saved here automatically!</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Animation -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-title">Generating Your AI Comic...</div>
+    <div class="loading-status" id="loadingStatus">Gemini AI is crafting unique storylines and Hugging Face FLUX is rendering panel artwork...</div>
+  </div>
+
+  <script>
+    const FORM_STORAGE_KEY = 'comiccraft_form_data';
+
+    // Save form data to LocalStorage on input
+    function saveFormData() {
+      const promptVal = document.getElementById('prompt').value;
+      const charVal = document.getElementById('character_name').value;
+      
+      const data = {
+        prompt: promptVal,
+        character_name: charVal,
+        panel_count: document.getElementById('panel_count').value,
+        setting: document.getElementById('setting').value,
+        tone: document.getElementById('tone').value,
+        style: document.getElementById('style').value
+      };
+      localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(data));
+    }
+
+    // Load saved form data from LocalStorage on page load / reload
+    function loadFormData() {
+      const saved = localStorage.getItem(FORM_STORAGE_KEY);
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          if (data.prompt !== undefined) document.getElementById('prompt').value = data.prompt;
+          if (data.character_name !== undefined) document.getElementById('character_name').value = data.character_name;
+          if (data.panel_count) document.getElementById('panel_count').value = data.panel_count;
+          if (data.setting) document.getElementById('setting').value = data.setting;
+          if (data.tone) document.getElementById('tone').value = data.tone;
+          if (data.style) document.getElementById('style').value = data.style;
+        } catch (e) {
+          console.error('Error loading saved form data:', e);
+        }
+      }
+
+      // Restore active tab if requested
+      const openTab = localStorage.getItem('openTab');
+      if (openTab === 'history') {
+        localStorage.removeItem('openTab');
+        switchTab('history');
+      }
+    }
+
+    function resetFormToDefaults() {
+      document.getElementById('prompt').value = '';
+      document.getElementById('character_name').value = '';
+      document.getElementById('panel_count').value = '3';
+      document.getElementById('setting').value = 'forest';
+      document.getElementById('tone').value = 'dramatic';
+      document.getElementById('style').value = 'comic book';
+      localStorage.removeItem(FORM_STORAGE_KEY);
+    }
+
+    // Attach change/input listeners to all form fields
+    ['prompt', 'character_name', 'panel_count', 'setting', 'tone', 'style'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', saveFormData);
+        el.addEventListener('change', saveFormData);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', loadFormData);
+
+    function switchTab(tab) {
+      const btnCreate = document.getElementById('tabCreate');
+      const btnHistory = document.getElementById('tabHistory');
+      const cardCreate = document.getElementById('cardCreate');
+      const cardHistory = document.getElementById('cardHistory');
+
+      if (tab === 'history') {
+        btnCreate.classList.remove('active');
+        btnHistory.classList.add('active');
+        cardCreate.style.display = 'none';
+        cardHistory.style.display = 'block';
+      } else {
+        btnHistory.classList.remove('active');
+        btnCreate.classList.add('active');
+        cardHistory.style.display = 'none';
+        cardCreate.style.display = 'block';
+      }
+    }
+
+    async function deleteComic(comicId) {
+      if (!confirm('Are you sure you want to remove this comic from history?')) return;
+      try {
+        const res = await fetch(`/api/history/${comicId}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          const el = document.getElementById(`history-item-${comicId}`);
+          if (el) el.remove();
+          
+          // Update badge
+          const remaining = document.querySelectorAll('.history-card').length;
+          document.getElementById('historyBadge').innerText = remaining;
+          if (remaining === 0) {
+            document.getElementById('historyList').innerHTML = `
+              <div class="empty-state">
+                <div class="empty-icon">📖</div>
+                <p><strong>No comics in history yet.</strong></p>
+              </div>`;
+          }
+        }
+      } catch (err) {
+        alert('Error deleting comic: ' + err.message);
+      }
+    }
+
+    async function clearAllHistory() {
+      if (!confirm('Are you sure you want to delete ALL comic history?')) return;
+      try {
+        const res = await fetch('/api/history/clear/all', { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('historyBadge').innerText = '0';
+          document.getElementById('historyList').innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon">📖</div>
+              <p><strong>No comics in history yet.</strong></p>
+            </div>`;
+        }
+      } catch (err) {
+        alert('Error clearing history: ' + err.message);
+      }
+    }
+
+    const form = document.getElementById('comicForm');
+    const overlay = document.getElementById('loadingOverlay');
+    const statusText = document.getElementById('loadingStatus');
+
+    form.addEventListener('submit', function() {
+      saveFormData();
+      overlay.style.display = 'flex';
+      const panelCount = document.getElementById('panel_count').value;
+      const steps = [
+        `Gemini AI: Structuring ${panelCount} distinct storyline panels...`,
+        "Gemini AI: Writing unique narration and character dialogues...",
+        "Hugging Face FLUX: Generating high-resolution panel illustrations...",
+        "Compiling comic panels and building PDF document..."
+      ];
+      let stepIndex = 0;
+      setInterval(() => {
+        stepIndex = (stepIndex + 1) % steps.length;
+        statusText.innerText = steps[stepIndex];
+      }, 3500);
+    });
+  </script>
+</body>
+</html>

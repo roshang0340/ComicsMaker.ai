@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comic Exported Successfully - ComicCraft</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: #1a2238 url('/static/scenic_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .success-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 45px 40px;
+      max-width: 580px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .success-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #16a34a;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .success-message {
+      font-size: 14.5px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn-create-another {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: #1976d2;
+      color: #ffffff;
+      padding: 13px 26px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s, transform 0.1s;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+    }
+
+    .btn-create-another:hover {
+      background-color: #1565c0;
+    }
+
+    .btn-create-another:active {
+      transform: scale(0.99);
+    }
+
+    .pdf-download-note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .pdf-download-note a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .pdf-download-note a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="success-card">
+    <div class="success-title">
+      <span>✅</span> Comic Exported Successfully!
+    </div>
+    <div class="success-message">
+      Your AI-powered comic has been successfully created! Dive back in and bring another story to life.
+    </div>
+    <div>
+      <a href="/" class="btn-create-another">
+        <span>🎨</span> Go Create Another Comic
+      </a>
+    </div>
+
+    {% if pdf_path %}
+    <div class="pdf-download-note">
+      Didn't get the download? <a href="{{ pdf_path }}" download>Click here to download PDF directly</a>
+    </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>

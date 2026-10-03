@@ -1,0 +1,117 @@
+[
+  {
+    "id": "comic_1791008447787",
+    "title": "Comic - Alex",
+    "prompt": "Students studying in college library for final exams",
+    "character_name": "Alex",
+    "setting": "school",
+    "tone": "dramatic",
+    "style": "comic book",
+    "panel_count": 2,
+    "cover_image": "/static/panels/panel_1791008437218_Comic_book_art_dramatic_l.png",
+    "pdf_path": "/static/exports/comic_Comic_-_Alex_20261003_115047.pdf",
+    "layout": [
+      {
+        "panel": 1,
+        "title": "The Weight of Knowledge",
+        "image_path": "/static/panels/panel_1791008437218_Comic_book_art_dramatic_l.png",
+        "scene_description": "Late at night in the cavernous university library, Alex sits trapped behind fortress-like towers of textbooks, feeling the crushing weight of the upcoming final exam.",
+        "caption": "[Scene 1: The air hums with mystery as ancient winds whisper through the realm.]",
+        "narration": "With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"",
+        "image_prompt": "Comic book art, dramatic low-angle shot, Alex, a determined college student with rumpled dark hair and exhausted eyes, hunched over a heavy oak desk buried beneath towering, precarious stacks of open textbooks, flashcards, and crumpled notes. Alex tightly grips a glowing neon highlighter poised over a dense diagram. In the background, towering cathedral-like bookshelves loom into darkness under flickering green banker lamps, with weary silhouettes of other students slumped in despair. Heavy inked cross-hatching, dramatic chiaroscuro lighting, deep shadows, and cinematic tension in modern graphic novel style.",
+        "text": "**CAPTION:** [Scene 1: The air hums with mystery as ancient winds whisper through the realm.]\n**NARRATION:** With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"\n**IMAGE PROMPT:** Comic book art, dramatic low-angle shot, Alex, a determined college student with rumpled dark hair and exhausted eyes, hunched over a heavy oak desk buried beneath towering, precarious stacks of open textbooks, flashcards, and crumpled notes. Alex tightly grips a glowing neon highlighter poised over a dense diagram. In the background, towering cathedral-like bookshelves loom into darkness under flickering green banker lamps, with weary silhouettes of other students slumped in despair. Heavy inked cross-hatching, dramatic chiaroscuro lighting, deep shadows, and cinematic tension in modern graphic novel style."
+      },
+      {
+        "panel": 2,
+        "title": "The Dawn Breakthrough",
+        "image_path": "/static/panels/panel_1791008443731_Comic_book_art_dynamic_Du.png",
+        "scene_description": "As the first light of dawn cuts through the gothic stained-glass windows, Alex experiences an intense epiphany, connecting the final piece of the study material.",
+        "caption": "[Scene 2: The air hums with mystery as ancient winds whisper through the realm.]",
+        "narration": "With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"",
+        "image_prompt": "Comic book art, dynamic Dutch angle medium shot, Alex snapping upright in a moment of electric revelation, eyes wide with adrenaline and triumphant realization, holding up a notebook covered in solved formulas. An empty coffee cup tumbles off the desk edge, mid-air with suspended droplets. Cold morning blue light and fiery orange sunbeams slice through tall arched cathedral windows, piercing the dusty atmosphere of the quiet library. Bold ink outlines, vibrant halftone dot textures, high-contrast rim lighting, capturing an intense, dramatic comic climax.",
+        "text": "**CAPTION:** [Scene 2: The air hums with mystery as ancient winds whisper through the realm.]\n**NARRATION:** With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"\n**IMAGE PROMPT:** Comic book art, dynamic Dutch angle medium shot, Alex snapping upright in a moment of electric revelation, eyes wide with adrenaline and triumphant realization, holding up a notebook covered in solved formulas. An empty coffee cup tumbles off the desk edge, mid-air with suspended droplets. Cold morning blue light and fiery orange sunbeams slice through tall arched cathedral windows, piercing the dusty atmosphere of the quiet library. Bold ink outlines, vibrant halftone dot textures, high-contrast rim lighting, capturing an intense, dramatic comic climax."
+      }
+    ],
+    "created_at": "Oct 03, 2026 • 11:50 AM"
+  },
+  {
+    "id": "comic_1791003927214",
+    "title": "Comic - Alex",
+    "prompt": "Students studying hard in college library for final exams",
+    "character_name": "Alex",
+    "setting": "library",
+    "tone": "dramatic",
+    "style": "comic book",
+    "panel_count": 3,
+    "cover_image": "/static/panels/panel_1791003913165_Comic_book_art_wide_estab.png",
+    "pdf_path": "/static/exports/comic_Comic_-_Alex_20261003_103525.pdf",
+    "layout": [
+      {
+        "panel": 1,
+        "title": "The Journey Begins",
+        "image_path": "/static/panels/panel_1791003913165_Comic_book_art_wide_estab.png",
+        "scene_description": "Alex steps into library, ready to face the upcoming challenge: Students studying hard in college library for final exams.",
+        "caption": "[Scene 1: The air hums with mystery as ancient winds whisper through the realm.]",
+        "narration": "With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"",
+        "image_prompt": "Comic book art, wide establishing shot of Alex in library, beginning the quest for Students studying hard in college library for final exams, detailed illustration, comic book style",
+        "text": "**CAPTION:** [Scene 1: The air hums with mystery as ancient winds whisper through the realm.]\n**NARRATION:** With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"\n**IMAGE PROMPT:** Comic book art, wide establishing shot of Alex in library, beginning the quest for Students studying hard in college library for final exams, detailed illustration, comic book style"
+      },
+      {
+        "panel": 2,
+        "title": "Into the Challenge",
+        "image_path": "/static/panels/panel_1791003921190_Comic_book_art_medium_sho.png",
+        "scene_description": "Hard work and dedication take over as Alex tackles complex problems and pushes through the difficulties.",
+        "caption": "[Scene 2: The air hums with mystery as ancient winds whisper through the realm.]",
+        "narration": "With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"",
+        "image_prompt": "Comic book art, medium shot of Alex working hard and strategizing in library, intense focus, glowing ambient lighting, comic book style",
+        "text": "**CAPTION:** [Scene 2: The air hums with mystery as ancient winds whisper through the realm.]\n**NARRATION:** With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"\n**IMAGE PROMPT:** Comic book art, medium shot of Alex working hard and strategizing in library, intense focus, glowing ambient lighting, comic book style"
+      },
+      {
+        "panel": 3,
+        "title": "Victory and Celebration",
+        "image_path": "/static/panels/panel_1791003923826_Comic_book_art_joyful_vic.png",
+        "scene_description": "Success achieved! Alex stands proud, celebrating the triumph of hard work and determination.",
+        "caption": "[Scene 3: The air hums with mystery as ancient winds whisper through the realm.]",
+        "narration": "With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"",
+        "image_prompt": "Comic book art, joyful victory shot of Alex celebrating success in library, golden lighting, vibrant colors, comic book style",
+        "text": "**CAPTION:** [Scene 3: The air hums with mystery as ancient winds whisper through the realm.]\n**NARRATION:** With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"\n**IMAGE PROMPT:** Comic book art, joyful victory shot of Alex celebrating success in library, golden lighting, vibrant colors, comic book style"
+      }
+    ],
+    "created_at": "Oct 03, 2026 • 10:35 AM"
+  },
+  {
+    "id": "comic_1791001780375",
+    "title": "Comic - GYPSY",
+    "prompt": "The students are studyingg hard for the upcoing exam ",
+    "character_name": "GYPSY",
+    "setting": "school",
+    "tone": "dramatic",
+    "style": "comic book",
+    "panel_count": 2,
+    "cover_image": "/static/panels/panel_1791001770660_Comic_book_art_Panel_1_Th.png",
+    "pdf_path": "/static/exports/comic_Comic_-_GYPSY_20261003_095939.pdf",
+    "layout": [
+      {
+        "panel": 1,
+        "title": "The Beginning",
+        "image_path": "/static/panels/panel_1791001770660_Comic_book_art_Panel_1_Th.png",
+        "scene_description": "Our hero embarks upon the journey, gazing out into the mystical terrain of The students are studyingg hard for the upcoing exam .",
+        "caption": "[Scene 1: The air hums with mystery as ancient winds whisper through the realm.]",
+        "narration": "With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"",
+        "image_prompt": "Comic book art, Panel 1: The students are studyingg hard for the upcoing exam , wide shot, heroic stance at dawn, crisp comic illustration, vibrant colors, detailed artwork",
+        "text": "**CAPTION:** [Scene 1: The air hums with mystery as ancient winds whisper through the realm.]\n**NARRATION:** With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"\n**IMAGE PROMPT:** Comic book art, Panel 1: The students are studyingg hard for the upcoing exam , wide shot, heroic stance at dawn, crisp comic illustration, vibrant colors, detailed artwork"
+      },
+      {
+        "panel": 2,
+        "title": "A New Dawn",
+        "image_path": "/static/panels/panel_1791001770661_Comic_book_art_Panel_2_Th.png",
+        "scene_description": "Looking toward the vast horizon with renewed purpose.",
+        "caption": "[Scene 2: The air hums with mystery as ancient winds whisper through the realm.]",
+        "narration": "With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"",
+        "image_prompt": "Comic book art, Panel 2: The students are studyingg hard for the upcoing exam , uplifting sunrise shot, vibrant comic colors, vibrant colors, detailed artwork",
+        "text": "**CAPTION:** [Scene 2: The air hums with mystery as ancient winds whisper through the realm.]\n**NARRATION:** With sharp focus and determination, the story progresses into uncharted territory. Free: \"There is no turning back now—destiny is calling!\"\n**IMAGE PROMPT:** Comic book art, Panel 2: The students are studyingg hard for the upcoing exam , uplifting sunrise shot, vibrant comic colors, vibrant colors, detailed artwork"
+      }
+    ],
+    "created_at": "Oct 03, 2026 • 09:59 AM"
+  }
+]
