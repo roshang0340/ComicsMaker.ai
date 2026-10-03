@@ -1,0 +1,28 @@
+{
+  "project": "ComicCraft \u2014 AI Comic Story Creator using Gemini Models",
+  "team_id": "SWTID-2026-1106",
+  "team_size": 5,
+  "team_leader": "Roshan G",
+  "team_members": [
+    "Vigneshwaran D",
+    "Saranya S",
+    "Swathi S",
+    "Thilipan U"
+  ],
+  "github": "https://github.com/roshang0340/ComicsMaker.ai.git",
+  "drive": "https://drive.google.com/file/d/1fpo-7eE_fAXjeJvJiTg4BNFONcjfhFva/view?usp=sharing",
+  "implementation": {
+    "backend": "FastAPI",
+    "frontend": "Jinja2 + HTML/CSS/JavaScript",
+    "text_models": [
+      "Gemini 3.8 Flash",
+      "Gemini 3.5 Flash-Lite fallback"
+    ],
+    "image_models": [
+      "Gemini 3.1 Flash Image",
+      "Gemini 3 Pro Image",
+      "Gemini 2.5 Flash Image fallback"
+    ],
+    "pdf": "ReportLab"
+  }
+}
